@@ -45,6 +45,25 @@ public class BoardController {
 		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
 		List<BoardDto> boardDtos = boardDao.boardListDao(); // 모든 글을 리스트로 가져오기
 		model.addAttribute("boardDtos", boardDtos);
+		model.addAttribute("boardCount", boardDao.allBoardCountDao()); // 모든 글 개수 전달하기
 		return "boardList";
+	}
+	
+	@RequestMapping (value = "/boarddelete")
+	public String boarddelete(HttpServletRequest request, Model model, HttpSession session) {
+		String bnum = request.getParameter("bnum");
+		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+		// 정말 삭제하겠습니까? 경고창 띄우고 싶은데
+		boardDao.boardDelete(bnum);
+		return "redirect:blist";
+	}
+	
+	@RequestMapping (value = "/boardview")
+	public String boardview(HttpServletRequest request, Model model, HttpSession session) {
+		String bnum = request.getParameter("bnum");
+		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+		BoardDto boardDto = boardDao.boardView(bnum);
+		model.addAttribute("boardDto", boardDto);
+		return "boardview";
 	}
 }
