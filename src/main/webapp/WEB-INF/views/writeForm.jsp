@@ -14,7 +14,7 @@
 		제목 <input type="text" name="btitle"><br />
 		글내용 <textarea rows="10" cols="45" name="bcontent"></textarea><br />
 		<input type="submit" value="글쓰기">
-		<a href="#">글목록으로 가기</a>
+		<a href="blist">글목록으로 가기</a>
 	</form>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.mycompany.oracle.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.oracle.dao.BoardDao;
+import com.mycompany.oracle.dto.BoardDto;
 
 @Controller
 public class BoardController {
@@ -39,7 +42,9 @@ public class BoardController {
 	
 	@RequestMapping (value = "/blist")
 	public String blist(HttpServletRequest request, Model model, HttpSession session) {
-
-		return "blist";
+		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+		List<BoardDto> boardDtos = boardDao.boardListDao(); // 모든 글을 리스트로 가져오기
+		model.addAttribute("boardDtos", boardDtos);
+		return "boardList";
 	}
 }
