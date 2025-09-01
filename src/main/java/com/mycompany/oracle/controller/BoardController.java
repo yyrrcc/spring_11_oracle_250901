@@ -62,6 +62,7 @@ public class BoardController {
 	public String boardview(HttpServletRequest request, Model model, HttpSession session) {
 		String bnum = request.getParameter("bnum");
 		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+		boardDao.updateHit(bnum); // 조회수 올리기
 		BoardDto boardDto = boardDao.boardView(bnum);
 		model.addAttribute("boardDto", boardDto);
 		return "boardview";

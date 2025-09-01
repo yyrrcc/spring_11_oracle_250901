@@ -49,4 +49,9 @@
 	<select id="boardView" resultType="com.mycompany.oracle.dto.BoardDto">
 		SELECT * FROM boardtbl WHERE bnum = #{param1}
 	</select>
+	
+	<!-- 조회수 올리기 -->
+	<update id="updateHit" >
+		UPDATE boardtbl SET bhit = bhit + 1 WHERE bnum = #{param1}
+	</update>
 </mapper>

@@ -1,5 +1,7 @@
 package com.mycompany.oracle.dto;
 
+import java.sql.Timestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,7 @@ public class BoardDto {
 	private String bcontent;
 	private String bwriter;
 	private int bhit;
-	private String bdate;
+	private Timestamp bdate;
 	
 	// BoardDto는 MemberDto와 1:1 관계
 	private MemberDto memberDto;
