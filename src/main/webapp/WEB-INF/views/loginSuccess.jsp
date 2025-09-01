@@ -9,6 +9,8 @@
 </head>
 <body>
 	<h3>${sessionScope.sessionId }님, 로그인에 성공하셨습니다.</h3>
+	<a href="bwrite">글쓰기</a> <br />
+	<a href="blist">게시판 목록 가기</a> <br />
 	<a href="logout">로그아웃</a>
 	</body>
 </html>
