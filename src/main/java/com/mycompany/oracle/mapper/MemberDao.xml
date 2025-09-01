@@ -15,4 +15,10 @@
 	<select id="memberidCheckDao" resultType="int">
 		SELECT count(*) FROM membertbl WHERE memberid = #{param1}
 	</select>
+
+	<!-- 로그인 검사 -->
+	<select id="memberLoginDao" resultType="int">
+		SELECT count(*) FROM membertbl WHERE memberid = #{param1} AND memberpw = #{param2}
+	</select>
+
 </mapper>

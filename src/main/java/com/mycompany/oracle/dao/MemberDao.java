@@ -7,5 +7,8 @@ public interface MemberDao {
 	
 	// 아이디 중복 검사 메서드
 	public int memberidCheckDao(String memberid);
+	
+	// 로그인
+	public int memberLoginDao(String memberid, String memberpw);
 
 }
