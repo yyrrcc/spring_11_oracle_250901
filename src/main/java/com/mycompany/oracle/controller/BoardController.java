@@ -53,18 +53,39 @@ public class BoardController {
 	public String boarddelete(HttpServletRequest request, Model model, HttpSession session) {
 		String bnum = request.getParameter("bnum");
 		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
-		// 정말 삭제하겠습니까? 경고창 띄우고 싶은데
-		boardDao.boardDelete(bnum);
+		int result = boardDao.boardDeleteDao(bnum);
+		if (result == 1) {
+			model.addAttribute("msg", "성공적으로 삭제되었습니다.");
+		    model.addAttribute("url", "blist");
+		    return "alert/alert";
+		}
 		return "redirect:blist";
 	}
 	
 	@RequestMapping (value = "/boardview")
-	public String boardview(HttpServletRequest request, Model model, HttpSession session) {
+	public String boardview(HttpServletRequest request, Model model) {
 		String bnum = request.getParameter("bnum");
 		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
-		boardDao.updateHit(bnum); // 조회수 올리기
-		BoardDto boardDto = boardDao.boardView(bnum);
+		boardDao.updateHitDao(bnum); // 조회수 올리기
+		BoardDto boardDto = boardDao.boardViewDao(bnum);
 		model.addAttribute("boardDto", boardDto);
 		return "boardview";
+	}
+	
+	@RequestMapping (value = "/boardModify")
+	public String boardModify(HttpServletRequest request, Model model) {
+		String bnum = request.getParameter("bnum");
+		String btitle = request.getParameter("btitle");
+		String bcontent = request.getParameter("bcontent");
+		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+		int result = boardDao.boardModifyDao(bnum, btitle, bcontent);
+		if (result == 1) {
+			model.addAttribute("msg", "성공적으로 수정되었습니다.");
+		    model.addAttribute("url", "blist"); 
+		} else {
+			model.addAttribute("msg", "글 수정 실패하였습니다.");
+		    model.addAttribute("url", "blist");
+		}
+		return "alert/alert";
 	}
 }

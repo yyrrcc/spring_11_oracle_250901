@@ -13,10 +13,13 @@ public interface BoardDao {
 	// 모든 글 개수 
 	public int allBoardCountDao();
 	// 글 삭제
-	public void boardDelete(String bnum);
+	public int boardDeleteDao(String bnum);
 	// 글 내용 확인하기
-	public BoardDto boardView(String bnum);
+	public BoardDto boardViewDao(String bnum);
 	// 조회수 올리기
-	public void updateHit(String bnum);
+	public void updateHitDao(String bnum);
+	
+	// 글 내용 수정하기
+	public int boardModifyDao(String bnum, String btitle, String bcontent);
 
 }

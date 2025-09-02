@@ -31,10 +31,11 @@
 				<td>${board.memberDto.membername }</td>
 				<td>${board.bhit }</td>
 				<td>
-					<fmt:formatDate value="${board.bdate }" pattern="yyyy-MM-dd HH:mm"/>
+					<fmt:formatDate value="${board.bdate }" pattern="yyyy-MM-dd"/>
 				</td>
 				<td>
-					<input type="button" value="삭제" onclick="javascript:window.location.href='boarddelete?bnum=${board.bnum}'">
+					<input type="button" value="삭제"
+					onclick="if(confirm('정말 삭제하시겠습니까?')){window.location.href='boarddelete?bnum=${board.bnum}';}">
 				</td>
 			</tr>
 		</c:forEach>
