@@ -88,4 +88,16 @@ public class BoardController {
 		}
 		return "alert/alert";
 	}
+	
+	
+	
+	@RequestMapping (value = "/pagelist")
+	public String pagelist(HttpServletRequest request, Model model) {
+		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+		List<BoardDto> boardDtos = boardDao.boardListDao(); // 모든 글을 리스트로 가져오기
+		model.addAttribute("boardDtos", boardDtos);
+		model.addAttribute("boardCount", boardDao.allBoardCountDao()); // 모든 글 개수 전달하기
+		return "pagelist";
+	}
+	
 }

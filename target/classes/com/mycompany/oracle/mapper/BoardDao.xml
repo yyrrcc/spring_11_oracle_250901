@@ -47,7 +47,7 @@
 	
 	<!-- 글 내용 확인하기 -->
 	<select id="boardViewDao" resultMap="boardWithMember">
-		<!-- SELECT * FROM boardtbl WHERE bnum = #{param1} -->
+		<!-- SELECT * FROM boardtbl WHERE bnum = #{param1} 사용할거면 resultType 사용해야함 -->
 		SELECT b.bnum, b.btitle, b.bcontent, b.bwriter, m.membername, b.bhit, b.bdate
 		FROM boardtbl b
 		INNER JOIN membertbl m
