@@ -124,4 +124,11 @@ public class BoardController {
 		return "pagelist";
 	}
 	
+	
+	
+	@RequestMapping (value = "/test")
+	public String test() {
+		return "test";
+	}
+	
 }
