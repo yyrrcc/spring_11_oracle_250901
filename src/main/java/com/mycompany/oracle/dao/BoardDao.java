@@ -18,8 +18,11 @@ public interface BoardDao {
 	public BoardDto boardViewDao(String bnum);
 	// 조회수 올리기
 	public void updateHitDao(String bnum);
-	
 	// 글 내용 수정하기
 	public int boardModifyDao(String bnum, String btitle, String bcontent);
+	
+	// 페이징된 글 목록 가져오기
+	public List<BoardDto> pageBoardListDao(int startRow, int endRow);
+	
 
 }

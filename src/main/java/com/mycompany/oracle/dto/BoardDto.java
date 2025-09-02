@@ -20,4 +20,7 @@ public class BoardDto {
 	
 	// BoardDto는 MemberDto와 1:1 관계
 	private MemberDto memberDto;
+	
+	// Oracle db에서 만든 rownum 값 필드
+	private int rnum;
 }
