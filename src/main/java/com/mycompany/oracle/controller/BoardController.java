@@ -131,4 +131,14 @@ public class BoardController {
 		return "test";
 	}
 	
+	@RequestMapping (value = "/kakaomaptest")
+	public String kakaomaptest() {
+		return "kakaomaptest";
+	}
+	
+	@RequestMapping (value = "/maptest")
+	public String maptest() {
+		return "maptest";
+	}
+	
 }
